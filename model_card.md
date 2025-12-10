@@ -1,114 +1,123 @@
-# Mood Machine Model Card
+# Model Card: Mood Machine
 
-> Template for reflection and documentation  
-> Fill this in after you have implemented and experimented with your MoodAnalyzer.
+This model card is for the Mood Machine project, which includes **two** versions of a mood classifier:
 
----
+1. A **rule based model** implemented in `mood_analyzer.py`
+2. A **machine learning model** implemented in `ml_experiments.py` using scikit learn
+
+You may complete this model card for whichever version you used, or compare both if you explored them.
 
 ## 1. Model Overview
 
-**Model name:**  
-Mood Machine (rule based mood classifier)
+**Model type:**  
+Describe whether you used the rule based model, the ML model, or both.  
+Example: “I used the rule based model only” or “I compared both models.”
 
-**Short description:**  
-Describe in 2 to 3 sentences what your system does.  
-For example: It predicts whether a short text is positive, negative, or neutral based on simple keyword rules.
+**Intended purpose:**  
+What is this model trying to do?  
+Example: classify short text messages as moods like positive, negative, neutral, or mixed.
 
-**Version or date:**  
-Example: Fall 2025 AI110, Module 3 Lab
+**How it works (brief):**  
+For the rule based version, describe the scoring rules you created.  
+For the ML version, describe how training works at a high level (no math needed).
 
----
 
-## 2. Intended Use
 
-### Primary intended uses and users
+## 2. Data
 
-- What is this model supposed to be used for in this lab?
-- Who is the user in this context (student, instructor, end user)?
+**Dataset description:**  
+Summarize how many posts are in `SAMPLE_POSTS` and how you added new ones.
 
-### Out of scope uses
+**Labeling process:**  
+Explain how you chose labels for your new examples.  
+Mention any posts that were hard to label or could have multiple valid labels.
 
-- What should this model not be used for?
-- For example: real mental health assessment, high stakes decisions, or serious content moderation.
+**Important characteristics of your dataset:**  
+Examples you might include:  
 
----
+- Contains slang or emojis  
+- Includes sarcasm  
+- Some posts express mixed feelings  
+- Contains short or ambiguous messages
 
-## 3. Data and Rules
+**Possible issues with the dataset:**  
+Think about imbalance, ambiguity, or missing kinds of language.
 
-### Keyword lists
+## 3. How the Rule Based Model Works (if used)
 
-- Briefly describe your positive and negative word lists.
-- How did you choose or change these lists during the lab?
+**Your scoring rules:**  
+Describe the modeling choices you made.  
+Examples:  
 
-### Example inputs
+- How positive and negative words affect score  
+- Negation rules you added  
+- Weighted words  
+- Emoji handling  
+- Threshold decisions for labels
 
-- What kinds of text did you test on (social posts, class comments, made up examples)?
+**Strengths of this approach:**  
+Where does it behave predictably or reasonably well?
 
----
+**Weaknesses of this approach:**  
+Where does it fail?  
+Examples: sarcasm, subtlety, mixed moods, unfamiliar slang.
 
-## 4. Evaluation
+## 4. How the ML Model Works (if used)
 
-### How you evaluated the model
+**Features used:**  
+Describe the representation.  
+Example: “Bag of words using CountVectorizer.”
 
-- Did you label a small set of posts by hand?
-- Did you compare the model output to your own judgment or to an AI tool?
+**Training data:**  
+State that the model trained on `SAMPLE_POSTS` and `TRUE_LABELS`.
 
-### Results and patterns
+**Training behavior:**  
+Did you observe changes in accuracy when you added more examples or changed labels?
 
-- Where did the model work well?
-- Where did it fail or behave in a surprising way?
+**Strengths and weaknesses:**  
+Strengths might include learning patterns automatically.  
+Weaknesses might include overfitting to the training data or picking up spurious cues.
 
----
+## 5. Evaluation
 
-## 5. Limitations and Risks
+**How you evaluated the model:**  
+Both versions can be evaluated on the labeled posts in `dataset.py`.  
+Describe what accuracy you observed.
 
-### Technical limitations
+**Examples of correct predictions:**  
+Provide 2 or 3 examples and explain why they were correct.
 
-- What are the main weaknesses of using simple keyword rules?
-- How does it handle:
-  - Sarcasm
-  - Mixed emotions
-  - Slang or emojis
-  - Negation (for example, "not happy")
+**Examples of incorrect predictions:**  
+Provide 2 or 3 examples and explain why the model made a mistake.  
+If you used both models, show how their failures differed.
 
-### Social or fairness concerns
+## 6. Limitations
 
-- Could some groups or ways of speaking be misclassified more often?
-- Does your word list reflect any stereotypes or hidden assumptions?
+Describe the most important limitations.  
+Examples:  
 
----
+- The dataset is small  
+- The model does not generalize to longer posts  
+- It cannot detect sarcasm reliably  
+- It depends heavily on the words you chose or labeled
 
-## 6. Example Failures
+## 7. Ethical Considerations
 
-List 2 to 4 specific examples where the model prediction did not match your own label.
+Discuss any potential impacts of using mood detection in real applications.  
+Examples: 
 
-For each example, include:
+- Misclassifying a message expressing distress  
+- Misinterpreting mood for certain language communities  
+- Privacy considerations if analyzing personal messages
 
-- The text
-- The model prediction
-- Your preferred label
-- A short explanation of why the model might be wrong
+## 8. Ideas for Improvement
 
----
+List ways to improve either model.  
+Possible directions:  
 
-## 7. Possible Improvements
-
-If you had more time or more tools, how could you improve the Mood Machine?
-
-You might consider:
-
-- Better word lists
-- Handling negation more carefully
-- Different weights for particular words
-- Using an ML based model instead of simple rules
-- Adding an explanation feature that shows which words influenced the decision
-
----
-
-## 8. Reflection
-
-In 3 to 5 sentences, reflect on:
-
-- What this lab taught you about how simple models work
-- How limitations in design and data can affect fairness and accuracy
-- How you would communicate these limits to a non technical stakeholder
+- Add more labeled data  
+- Use TF IDF instead of CountVectorizer  
+- Add better preprocessing for emojis or slang  
+- Use a small neural network or transformer model  
+- Improve the rule based scoring method  
+- Add a real test set instead of training accuracy only

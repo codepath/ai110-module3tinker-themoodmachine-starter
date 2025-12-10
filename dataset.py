@@ -1,18 +1,63 @@
-# Starter keyword lists
+# dataset.py
+"""
+Shared data for the Mood Machine lab.
+
+This file defines:
+  - POSITIVE_WORDS: starter list of positive words
+  - NEGATIVE_WORDS: starter list of negative words
+  - SAMPLE_POSTS: short example posts for evaluation and training
+  - TRUE_LABELS: human labels for each post in SAMPLE_POSTS
+
+You will:
+  - Add more words to the positive and negative lists
+  - Add more SAMPLE_POSTS that show different kinds of language
+  - Add matching TRUE_LABELS for every post
+  - Use this same dataset for both the rule based model (main.py)
+    and the ML model (ml_experiments.py)
+"""
+
+# ---------------------------------------------------------------------
+# Starter word lists
+# ---------------------------------------------------------------------
+
 POSITIVE_WORDS = [
-    "love", "great", "happy", "amazing", "good",
-    "excited", "fun", "awesome"
+    "happy",
+    "great",
+    "good",
+    "love",
+    "excited",
+    "awesome",
+    "fun",
+    "chill",
+    "relaxed",
+    "amazing",
 ]
 
 NEGATIVE_WORDS = [
-    "hate", "bad", "angry", "tired", "sad",
-    "terrible", "awful", "upset"
+    "sad",
+    "bad",
+    "terrible",
+    "awful",
+    "angry",
+    "upset",
+    "tired",
+    "stressed",
+    "hate",
+    "boring",
 ]
 
-# Optional extension - add slang, emojis, or domain specific words
-# NEUTRAL_WORDS = []
+# You are encouraged to extend these lists during the lab.
+# For example, you might add:
+#   - Slang ("fire", "lit", "mid", "trash")
+#   - Emojis (":)", ":(", "🥲", "💀", "😂")
+#   - Phrases that clearly signal strong feelings
 
-# A small starter dataset of posts to classify
+
+# ---------------------------------------------------------------------
+# Starter labeled dataset
+# ---------------------------------------------------------------------
+
+# Short example posts written as if they were social media updates or messages.
 SAMPLE_POSTS = [
     "I love this class so much",
     "Today was a terrible day",
@@ -22,7 +67,47 @@ SAMPLE_POSTS = [
     "I am not happy about this",
 ]
 
-# TODO:
-# - Add at least 5 more posts to SAMPLE_POSTS
-# - Include slang, emojis, or sarcasm to explore odd behavior
-# - Optionally create a parallel list TRUE_LABELS with human labels
+# Human labels for each post above.
+# Allowed labels in the starter:
+#   - "positive"
+#   - "negative"
+#   - "neutral"
+#   - "mixed"
+TRUE_LABELS = [
+    "positive",  # "I love this class so much"
+    "negative",  # "Today was a terrible day"
+    "mixed",     # "Feeling tired but kind of hopeful"
+    "neutral",   # "This is fine"
+    "positive",  # "So excited for the weekend"
+    "negative",  # "I am not happy about this"
+]
+
+# ---------------------------------------------------------------------
+# Your turn: extend the dataset
+# ---------------------------------------------------------------------
+#
+# TODO: Add at least 10 more posts and labels.
+#
+# Requirements:
+#   - For every new post you add to SAMPLE_POSTS, you must add one
+#     matching label to TRUE_LABELS.
+#   - SAMPLE_POSTS and TRUE_LABELS must always have the same length.
+#   - Include a variety of language styles, such as:
+#       * Slang ("lowkey", "highkey", "no cap")
+#       * Emojis (":)", ":(", "🥲", "😂", "💀")
+#       * Sarcasm ("I absolutely love getting stuck in traffic")
+#       * Ambiguous or mixed feelings
+#
+# Tips:
+#   - Try to create some examples that are hard to label even for you.
+#   - Make a note of any examples that you and a friend might disagree on.
+#     Those "edge cases" are interesting to inspect for both the rule based
+#     and ML models.
+#
+# Example of how you might extend the lists:
+#
+# SAMPLE_POSTS.append("Lowkey stressed but kind of proud of myself")
+# TRUE_LABELS.append("mixed")
+#
+# Remember to keep them aligned:
+#   len(SAMPLE_POSTS) == len(TRUE_LABELS)

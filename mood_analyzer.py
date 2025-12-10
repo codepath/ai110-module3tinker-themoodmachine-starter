@@ -7,15 +7,6 @@ This class starts with very simple logic:
   - Look for positive and negative words
   - Compute a numeric score
   - Convert that score into a mood label
-
-Your job in this lab is to:
-  - Improve the preprocessing
-  - Design at least one non trivial scoring rule
-  - Decide how scores map to labels
-  - (Optional but recommended) Implement an explanation method
-
-Later, you will compare this rule based system to a small ML model
-in ml_experiments.py that learns patterns from data.
 """
 
 from typing import List, Dict, Tuple, Optional
@@ -26,9 +17,6 @@ from dataset import POSITIVE_WORDS, NEGATIVE_WORDS
 class MoodAnalyzer:
     """
     A very simple, rule based mood classifier.
-
-    By default, it uses the POSITIVE_WORDS and NEGATIVE_WORDS lists
-    from dataset.py, but you can pass in your own lists to experiment.
     """
 
     def __init__(
@@ -86,16 +74,12 @@ class MoodAnalyzer:
           - Count how many times each word appears instead of just presence
           - Give some words higher weights than others (for example "hate" < "annoyed")
           - Treat emojis or slang (":)", "lol", "💀") as strong signals
-
-        Whatever you choose, write it in English first in your notes or model card,
-        then implement it here in code.
         """
         tokens = self.preprocess(text)
 
         score = 0
 
         # Basic scoring: +1 for each positive word, -1 for each negative word.
-        # You will extend or modify this logic as part of the lab.
         for token in tokens:
             if token in self.positive_words:
                 score += 1
@@ -142,9 +126,6 @@ class MoodAnalyzer:
     def explain(self, text: str) -> str:
         """
         Return a short string explaining WHY the model chose its label.
-
-        This is optional in the starter, but strongly recommended for the lab.
-        It will help you fill out the model card and understand your own rules.
 
         TODO:
           - Look at the tokens and identify which ones counted as positive

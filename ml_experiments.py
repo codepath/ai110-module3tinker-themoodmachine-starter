@@ -5,21 +5,11 @@ Simple ML experiments for the Mood Machine lab.
 This file uses a "real" machine learning library (scikit-learn)
 to train a tiny text classifier on the same SAMPLE_POSTS and
 TRUE_LABELS that you use with the rule based model.
-
-You will:
-  - Add more labeled examples in dataset.py
-  - Run this script to train a model on your labels
-  - See how well the model fits your data
-  - Compare its behavior to the rule based MoodAnalyzer
-
-Right now, this script only evaluates on the training data.
-That is fine for this lab, but in the real world you would
-want to test on separate data that the model has not seen.
 """
 
 from typing import List, Tuple
 
-from sklearn.feature_extraction.text import CountVectorizer  # or TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
@@ -70,10 +60,6 @@ def evaluate_on_dataset(
 
     Prints each text with its predicted label and the true label,
     then returns the overall accuracy as a float between 0 and 1.
-
-    In this starter, we evaluate on the same data used for training.
-    That helps you see how well the model fits your dataset, but in
-    practice you would want to use separate test data.
     """
     if len(texts) != len(labels):
         raise ValueError(

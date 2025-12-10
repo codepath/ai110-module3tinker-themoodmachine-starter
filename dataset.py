@@ -1,4 +1,3 @@
-# dataset.py
 """
 Shared data for the Mood Machine lab.
 
@@ -7,13 +6,6 @@ This file defines:
   - NEGATIVE_WORDS: starter list of negative words
   - SAMPLE_POSTS: short example posts for evaluation and training
   - TRUE_LABELS: human labels for each post in SAMPLE_POSTS
-
-You will:
-  - Add more words to the positive and negative lists
-  - Add more SAMPLE_POSTS that show different kinds of language
-  - Add matching TRUE_LABELS for every post
-  - Use this same dataset for both the rule based model (main.py)
-    and the ML model (ml_experiments.py)
 """
 
 # ---------------------------------------------------------------------
@@ -46,13 +38,6 @@ NEGATIVE_WORDS = [
     "boring",
 ]
 
-# You are encouraged to extend these lists during the lab.
-# For example, you might add:
-#   - Slang ("fire", "lit", "mid", "trash")
-#   - Emojis (":)", ":(", "🥲", "💀", "😂")
-#   - Phrases that clearly signal strong feelings
-
-
 # ---------------------------------------------------------------------
 # Starter labeled dataset
 # ---------------------------------------------------------------------
@@ -82,10 +67,6 @@ TRUE_LABELS = [
     "negative",  # "I am not happy about this"
 ]
 
-# ---------------------------------------------------------------------
-# Your turn: extend the dataset
-# ---------------------------------------------------------------------
-#
 # TODO: Add at least 10 more posts and labels.
 #
 # Requirements:

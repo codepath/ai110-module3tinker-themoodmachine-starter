@@ -1,14 +1,5 @@
-# main.py
 """
 Entry point for the Mood Machine rule based mood analyzer.
-
-You will:
-  - Run the rule based model on a small labeled dataset.
-  - See its accuracy and some example predictions.
-  - Try out your own sentences in an interactive loop.
-
-Later, you will compare this behavior with the ML based version
-in ml_experiments.py, which trains a model using scikit learn.
 """
 
 from typing import List
@@ -92,13 +83,10 @@ def run_interactive_loop() -> None:
 
 
 if __name__ == "__main__":
-    # First, evaluate the rule based model on the labeled examples.
     evaluate_rule_based(SAMPLE_POSTS, TRUE_LABELS)
 
-    # Then show a quick batch demo of predictions.
     run_batch_demo()
 
-    # Finally, let the student play with their own inputs.
     run_interactive_loop()
 
     print("\nTip: After you explore the rule based model here,")

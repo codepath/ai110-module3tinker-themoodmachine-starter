@@ -67,7 +67,7 @@ TRUE_LABELS = [
     "negative",  # "I am not happy about this"
 ]
 
-# TODO: Add at least 10 more posts and labels.
+# TODO: Add 5-10 more posts and labels.
 #
 # Requirements:
 #   - For every new post you add to SAMPLE_POSTS, you must add one

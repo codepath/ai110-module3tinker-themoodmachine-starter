@@ -15,6 +15,7 @@ This lab gives you hands on experience with how basic systems work, where they b
 ├── ml_experiments.py  # (New) A tiny ML classifier using scikit-learn
 ├── model_card.md      # Template to fill out after experimenting
 └── requirements.txt   # Dependencies for optional ML exploration
+```
 
 ---
 

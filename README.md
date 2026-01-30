@@ -39,9 +39,9 @@ If pieces of the analyzer are not implemented yet, you will see helpful errors t
 
 To try the ML model later, run:
 
-    ```bash
-    python ml_experiments.py
-    ```
+```bash
+python ml_experiments.py
+```
 
 ---
 

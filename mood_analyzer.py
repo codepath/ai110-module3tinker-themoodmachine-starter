@@ -39,22 +39,8 @@ class MoodAnalyzer:
     def preprocess(self, text: str) -> List[str]:
         """
         Convert raw text into a list of tokens the model can work with.
-
-        TODO: Improve this method.
-
-        Right now, it does the minimum:
-          - Strips leading and trailing whitespace
-          - Converts everything to lowercase
-          - Splits on spaces
-
-        Ideas to improve:
-          - Remove punctuation
-          - Handle simple emojis separately (":)", ":-(", "🥲", "😂")
-          - Normalize repeated characters ("soooo" -> "soo")
         """
-        cleaned = text.strip().lower()
-        tokens = cleaned.split()
-
+        tokens = []
         return tokens
 
     # ---------------------------------------------------------------------
@@ -78,16 +64,6 @@ class MoodAnalyzer:
         tokens = self.preprocess(text)
 
         score = 0
-
-        # Basic scoring: +1 for each positive word, -1 for each negative word.
-        for token in tokens:
-            if token in self.positive_words:
-                score += 1
-            if token in self.negative_words:
-                score -= 1
-
-        # Hint: if you implement negation, you may want to look at pairs of tokens,
-        # like ("not", "happy") or ("never", "fun").
         return score
 
     # ---------------------------------------------------------------------
@@ -111,11 +87,6 @@ class MoodAnalyzer:
         you use in TRUE_LABELS in dataset.py if you care about accuracy.
         """
         score = self.score_text(text)
-
-        if score > 0:
-            return "positive"
-        if score < 0:
-            return "negative"
 
         return "neutral"
 
@@ -144,14 +115,6 @@ class MoodAnalyzer:
         positive_hits: List[str] = []
         negative_hits: List[str] = []
         score = 0
-
-        for token in tokens:
-            if token in self.positive_words:
-                positive_hits.append(token)
-                score += 1
-            if token in self.negative_words:
-                negative_hits.append(token)
-                score -= 1
 
         return (
             f"Score = {score} "

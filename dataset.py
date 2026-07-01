@@ -92,3 +92,29 @@ TRUE_LABELS = [
 #
 # Remember to keep them aligned:
 #   len(SAMPLE_POSTS) == len(TRUE_LABELS)
+
+# Added posts for Part 1
+SAMPLE_POSTS.append("I passed the test and I feel amazing")
+TRUE_LABELS.append("positive")
+
+SAMPLE_POSTS.append("That update broke everything again")
+TRUE_LABELS.append("negative")
+
+SAMPLE_POSTS.append("It's okay I guess")
+TRUE_LABELS.append("neutral")
+
+SAMPLE_POSTS.append("I love the design but the app keeps crashing")
+TRUE_LABELS.append("mixed")
+
+SAMPLE_POSTS.append("Bruh this took forever but it finally works")
+TRUE_LABELS.append("mixed")
+
+SAMPLE_POSTS.append("Yeah great another error message")
+TRUE_LABELS.append("negative")
+
+SAMPLE_POSTS.append("Not bad at all actually pretty good")
+TRUE_LABELS.append("positive")
+
+SAMPLE_POSTS.append("I'm exhausted but proud of myself")
+TRUE_LABELS.append("mixed")
+

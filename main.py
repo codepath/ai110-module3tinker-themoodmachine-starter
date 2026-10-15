@@ -26,11 +26,9 @@ def evaluate_rule_based(posts: List[str], labels: List[str]) -> float:
         if is_correct:
             correct += 1
 
-        # If you implement explain(), you can uncomment these lines:
-        # reason = analyzer.explain(text)
-        # print(f'"{text}" -> predicted={predicted_label}, true={true_label} ({reason})')
-
-        print(f'"{text}" -> predicted={predicted_label}, true={true_label}')
+        reason = analyzer.explain(text)
+        mark = "OK " if is_correct else "XX "
+        print(f'{mark}"{text}" -> predicted={predicted_label}, true={true_label} ({reason})')
 
     if total == 0:
         print("\nNo labeled examples to evaluate.")

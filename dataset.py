@@ -23,6 +23,11 @@ POSITIVE_WORDS = [
     "chill",
     "relaxed",
     "amazing",
+    # Added in Part 1:
+    "proud",
+    "hopeful",
+    "best",
+    "glad",
 ]
 
 NEGATIVE_WORDS = [
@@ -36,6 +41,11 @@ NEGATIVE_WORDS = [
     "stressed",
     "hate",
     "boring",
+    # Added in Part 1:
+    "exhausted",
+    "worst",
+    "ugh",
+    "mad",
 ]
 
 # ---------------------------------------------------------------------
@@ -67,28 +77,35 @@ TRUE_LABELS = [
     "negative",  # "I am not happy about this"
 ]
 
-# TODO: Add 5-10 more posts and labels.
-#
-# Requirements:
-#   - For every new post you add to SAMPLE_POSTS, you must add one
-#     matching label to TRUE_LABELS.
-#   - SAMPLE_POSTS and TRUE_LABELS must always have the same length.
-#   - Include a variety of language styles, such as:
-#       * Slang ("lowkey", "highkey", "no cap")
-#       * Emojis (":)", ":(", "🥲", "😂", "💀")
-#       * Sarcasm ("I absolutely love getting stuck in traffic")
-#       * Ambiguous or mixed feelings
-#
-# Tips:
-#   - Try to create some examples that are hard to label even for you.
-#   - Make a note of any examples that you and a friend might disagree on.
-#     Those "edge cases" are interesting to inspect for both the rule based
-#     and ML models.
-#
-# Example of how you might extend the lists:
-#
-# SAMPLE_POSTS.append("Lowkey stressed but kind of proud of myself")
-# TRUE_LABELS.append("mixed")
-#
-# Remember to keep them aligned:
-#   len(SAMPLE_POSTS) == len(TRUE_LABELS)
+# ---------------------------------------------------------------------
+# Added posts (Part 1): slang, emojis, sarcasm, mixed feelings, negation
+# ---------------------------------------------------------------------
+# Each post is added together with its label so the two lists stay aligned.
+NEW_EXAMPLES = [
+    ("Lowkey stressed but highkey proud of myself", "mixed"),
+    ("I absolutely love getting stuck in traffic", "negative"),  # sarcasm
+    ("this new album is fire 🔥", "positive"),                    # slang + emoji
+    ("that game last night was sick", "positive"),               # slang: "sick" = great
+    ("I'm fine 🙂", "neutral"),                                   # ambiguous: could be passive-aggressive
+    ("exhausted but proud of myself", "mixed"),
+    ("not bad at all, actually pretty good", "positive"),        # negation
+    ("ugh my phone died again 💀", "negative"),
+    ("no cap this is the best day ever", "positive"),            # slang
+    ("i aint even mad, it was kinda funny tho", "positive"),     # informal spelling + negation
+]
+
+for post, label in NEW_EXAMPLES:
+    SAMPLE_POSTS.append(post)
+    TRUE_LABELS.append(label)
+
+# Guard: crash early with a clear message if the lists ever drift apart.
+assert len(SAMPLE_POSTS) == len(TRUE_LABELS), (
+    f"SAMPLE_POSTS has {len(SAMPLE_POSTS)} posts but TRUE_LABELS has "
+    f"{len(TRUE_LABELS)} labels"
+)
+
+# Hard-to-label notes:
+#   - "I'm fine 🙂" could be read as calm (neutral) or passive-aggressive
+#     (negative). I labeled it neutral; a friend might not.
+#   - "I absolutely love getting stuck in traffic" is sarcastic, so its true
+#     label is negative even though "love" is a positive word.
